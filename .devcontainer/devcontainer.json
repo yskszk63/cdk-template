@@ -1,0 +1,25 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/base:bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "ghcr.io/devcontainers/features/aws-cli:1": {
+      "version": "latest"
+    }
+  },
+  "containerEnv": {
+    "AWS_CONFIG_FILE": "/aws/config",
+    "AWS_SHARED_CREDENTIALS_FILE": "/aws/credentials"
+  },
+  "runArgs": ["--env-file",".devcontainer/devcontainer.env"],
+  "mounts": [
+    {
+      "source": "${localEnv:HOME}/.aws",
+      "target": "/aws",
+      "type": "bind",
+      "read_only": true
+    }
+  ],
+  "onCreateCommand": ["corepack", "enable", "npm" ]
+}
