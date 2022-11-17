@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - use-image-cache # TODO for test REMOVE ME.
 
 jobs:
   build:
