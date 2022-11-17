@@ -1,5 +1,8 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/base:bullseye",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "cacheFrom": "ghcr.io/yskszk63/cdk-template"
+  },
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "18"
