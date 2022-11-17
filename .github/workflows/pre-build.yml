@@ -1,3 +1,5 @@
+name: Pre build devcontainer image
+
 on:
   push:
     branches:
