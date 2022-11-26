@@ -86,7 +86,15 @@ async function readAll(reader: ReadableStream<Uint8Array>): Promise<string> {
   return chunks.join("");
 }
 
+function help(): never {
+  console.log("usage: %prog [path/to/apply] <template name> <app name>");
+  Deno.exit(-1);
+}
+
 async function main() {
+  if (Deno.args.length < 1) {
+    help();
+  }
   const opts = Opts.fronArgs(Deno.args);
 
   const template = await fetch(opts.template);
