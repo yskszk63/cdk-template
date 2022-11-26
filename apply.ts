@@ -1,6 +1,7 @@
 import * as tar from "https://deno.land/std@0.166.0/archive/tar.ts";
 import * as streams from "https://deno.land/std@0.166.0/streams/mod.ts";
 import * as fs from "https://deno.land/std@0.166.0/fs/mod.ts";
+import * as path from "https://deno.land/std@0.166.0/path/mod.ts";
 import { pascalCase, paramCase } from "https://deno.land/x/case@2.1.1/mod.ts";
 
 import * as mustache from "https://deno.land/x/mustache_ts@v0.4.1.1/mustache.ts";
@@ -57,7 +58,7 @@ class Opts {
       return `${spec}/`;
     }
 
-    const cwd = new URL(`${Deno.cwd()}/`, import.meta.url);
+    const cwd = path.toFileUrl(`${Deno.cwd()}/`);
     const dir = new URL(appendSlashIfNeed(args[0]) ?? ".", cwd);
     const template = resolveTemplate(args[1], cwd);
 
