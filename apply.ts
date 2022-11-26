@@ -34,6 +34,7 @@ class Opts {
     // args[0] ... dest
     // args[1] ... template
     // args[2] ... name
+    const [dest, mayBeTemplate, mayBeName] = args;
 
     function resolveTemplate(spec: string | undefined, cwd: URL): URL {
       if (typeof spec === "undefined") {
@@ -48,21 +49,22 @@ class Opts {
       return new URL(spec, cwd);
     }
 
-    function appendSlashIfNeed(spec: string | undefined): string | undefined {
-      if (typeof spec === "undefined") {
-        return void 0;
-      }
+    function appendSlashIfNeed(spec: string): string {
       if (spec.startsWith("/")) {
         return spec;
       }
       return `${spec}/`;
     }
 
-    const cwd = path.toFileUrl(`${Deno.cwd()}/`);
-    const dir = new URL(appendSlashIfNeed(args[0]) ?? ".", cwd);
-    const template = resolveTemplate(args[1], cwd);
+    if (typeof dest === "undefined") {
+      throw new Error();
+    }
 
-    const name = args[2] ?? dir.pathname.split("/").at(-2); // '/a/b/c/' -> ['a', 'b', 'c', '']
+    const cwd = path.toFileUrl(`${Deno.cwd()}/`);
+    const dir = new URL(appendSlashIfNeed(dest), cwd);
+    const template = resolveTemplate(mayBeTemplate, cwd);
+
+    const name = mayBeName ?? path.basename(dir.pathname);
     if (typeof name === "undefined") {
       throw new Error();
     }
