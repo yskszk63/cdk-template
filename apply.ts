@@ -91,7 +91,7 @@ async function main() {
 
   const template = await fetch(opts.template);
   if (!template.ok) {
-    throw new Error(template.statusText);
+    throw new Error(`${template.statusText}: ${opts.template}`);
   }
   if (template.body === null) {
     throw new Error();
