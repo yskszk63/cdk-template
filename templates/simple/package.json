@@ -13,7 +13,7 @@
     "cdk": "cdk"
   },
   "devDependencies": {
-    "@swc/core": "^1.3.18",
+    "@swc/core": "^1.3.19",
     "@tsconfig/strictest": "^1.0.2",
     "@types/jest": "^29.2.3",
     "@types/node": "18.11.9",
