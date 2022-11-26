@@ -2,7 +2,7 @@ import * as tar from "https://deno.land/std@0.166.0/archive/tar.ts";
 import * as streams from "https://deno.land/std@0.166.0/streams/mod.ts";
 import * as fs from "https://deno.land/std@0.166.0/fs/mod.ts";
 import * as path from "https://deno.land/std@0.166.0/path/mod.ts";
-import { pascalCase, paramCase } from "https://deno.land/x/case@2.1.1/mod.ts";
+import { paramCase, pascalCase } from "https://deno.land/x/case@2.1.1/mod.ts";
 
 import * as mustache from "https://deno.land/x/mustache_ts@v0.4.1.1/mustache.ts";
 
@@ -99,7 +99,7 @@ async function main() {
 
   const model = {
     name: opts.name,
-  }
+  };
 
   const ungzip = new DecompressionStream("gzip");
   const reader = template.body.pipeThrough(ungzip).getReader();
@@ -111,7 +111,7 @@ async function main() {
       }
 
       const dest = new URL(entry.fileName.slice("package/".length), opts.dir);
-      await fs.ensureFile(dest)
+      await fs.ensureFile(dest);
       const stat = await Deno.stat(dest);
       if (stat.size > 0) {
         console.warn("File exists. skip:", dest.toString());
