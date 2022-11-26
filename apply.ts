@@ -144,7 +144,10 @@ async function main() {
       new URL(".devcontainer/devcontainer.env", opts.dir),
     );
   } catch (e) {
-    if (!(e instanceof Deno.errors.NotFound)) {
+    if (
+      !(e instanceof Deno.errors.NotFound) &&
+      !(e instanceof Deno.errors.AlreadyExists)
+    ) {
       throw e;
     }
   }
