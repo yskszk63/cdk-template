@@ -17,7 +17,7 @@
     "AWS_CONFIG_FILE": "/aws/config",
     "AWS_SHARED_CREDENTIALS_FILE": "/aws/credentials"
   },
-  "runArgs": ["--env-file",".devcontainer/devcontainer.env"],
+  "runArgs": ["--env-file", ".devcontainer/devcontainer.env"],
   "mounts": [
     {
       "source": "${localEnv:HOME}/.aws",
@@ -26,5 +26,5 @@
       "read_only": true
     }
   ],
-  "onCreateCommand": ["corepack", "enable", "npm" ]
+  "onCreateCommand": ["corepack", "enable", "npm"]
 }

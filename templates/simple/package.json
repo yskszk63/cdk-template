@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "{{name.kebabCase}}",
   "version": "0.1.0",
   "type": "module",
   "packageManager": "npm@9.1.2",
