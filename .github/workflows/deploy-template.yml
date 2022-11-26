@@ -21,10 +21,20 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: lts
+          node-version: 'lts/*'
 
       - run: make build-archives
 
       - uses: actions/upload-pages-artifact@v1
         with:
           path: ./out
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v1
