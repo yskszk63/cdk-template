@@ -19,6 +19,7 @@ jobs:
 
       - uses: devcontainers/ci@v0.2
         with:
+          subFolder: devcontainer
           imageName: ghcr.io/yskszk63/cdk-template
           cacheFrom: ghcr.io/yskszk63/cdk-template
           push: always

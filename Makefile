@@ -1,14 +1,9 @@
 .PHONY: nop
 nop:
 
-.PHONY: build
-build:
-	devcontainer --workspace-folder . build
-
-.PHONY: up
-up:
-	devcontainer --workspace-folder . up
-
-.PHONY: deploy
-deploy: up
-	devcontainer exec --workspace-folder . npx cdk deploy
+.PHONY: build-archives
+build-archives:
+	$(RM) -r ${CURDIR}/out
+	mkdir -p ${CURDIR}/out
+	for d in ${CURDIR}/templates/*; do (cd $$d && npm pack --pack-destination ${CURDIR}/out); done
+	ls ${CURDIR}/out/*.tgz >> index.txt && mv index.txt ${CURDIR}/out

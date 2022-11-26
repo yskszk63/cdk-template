@@ -1,0 +1,4 @@
+{
+  "image": "ghcr.io/yskszk63/cdk-template",
+  "runArgs": ["--env-file",".devcontainer/devcontainer.env"]
+}
