@@ -4,5 +4,5 @@ import * as cdk from 'aws-cdk-lib';
 import { Stack } from '../lib/stack.js';
 
 const app = new cdk.App();
-new Stack(app, 'ExampleStack', {
+new Stack(app, '{{name.camelCase}}Stack', {
 });
