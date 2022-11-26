@@ -136,5 +136,14 @@ async function main() {
   } finally {
     reader.releaseLock();
   }
+
+  // try copy envfile
+  try {
+    await fs.copy("devcontainer.env", new URL(".devcontainer/devcontainer.env", opts.dir));
+  } catch (e) {
+    if (!(e instanceof Deno.errors.NotFound)) {
+      throw e;
+    }
+  }
 }
 await main();
