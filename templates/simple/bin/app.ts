@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env -S npx tsx
 import * as cdk from "aws-cdk-lib";
 import { Stack } from "../lib/stack.js";
 
