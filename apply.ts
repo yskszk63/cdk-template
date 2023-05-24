@@ -43,7 +43,7 @@ class Opts {
 
       try {
         return new URL(spec);
-      } catch (e) {
+      } catch (_e) {
         // pass
       }
       return new URL(spec, cwd);

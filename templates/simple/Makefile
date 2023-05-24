@@ -1,14 +1,16 @@
+CDK = npm run cdk
+
 .PHONY: nop
 nop:
 
+.PHONY: synth
+synth:
+	$(CDK) synth
+
 .PHONY: build
 build:
-	devcontainer --workspace-folder . build
-
-.PHONY: up
-up:
-	devcontainer --workspace-folder . up
+	$(CDK) --app cdk.out build
 
 .PHONY: deploy
-deploy: up
-	devcontainer exec --workspace-folder . npx cdk deploy
+deploy:
+	$(CDK) --app cdk.out deploy
