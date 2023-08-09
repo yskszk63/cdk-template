@@ -3,4 +3,11 @@ import * as cdk from "aws-cdk-lib";
 import { Stack } from "../lib/stack.js";
 
 const app = new cdk.App();
-new Stack(app, "{{name.camelCase}}Stack", {});
+new Stack(app, "{{name.camelCase}}Stack", {
+  env: {
+    account: "xxx",
+  },
+  tags: {
+    Owner: "xxx",
+  },
+});

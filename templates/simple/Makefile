@@ -1,16 +1,16 @@
-CDK = npm run cdk
+CDK = npm run cdk --
 
 .PHONY: nop
 nop:
 
 .PHONY: synth
 synth:
-	$(CDK) synth
+	$(CDK) synth --quiet
 
-.PHONY: build
-build:
-	$(CDK) --app cdk.out build
+.PHONY: diff
+diff:
+	$(CDK) --app cdk.out diff
 
 .PHONY: deploy
 deploy:
-	$(CDK) --app cdk.out deploy
+	$(CDK) --app cdk.out deploy --require-approval=never --all
